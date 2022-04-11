@@ -1,0 +1,408 @@
+/* customised scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.main {
+  position: absolute;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  background-color: #e0f0fd;
+  /* padding: 4% 30%; */
+  padding-left: auto;
+  padding-right: auto;
+  display: flex;
+}
+
+.videoPannel {
+  height: 100%;
+  width: 60%;
+  /* border-right: 1px solid grey; */
+}
+
+.peer2Div {
+  position: relative;
+  height: 50%;
+  width: 65%;
+  border: 1px solid grey;
+  top: 10%;
+  left: 15%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.vidText {
+  position: relative;
+  top: 35%;
+}
+
+.peer2Video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.peer1Div {
+  position: relative;
+  height: 15%;
+  width: 15%;
+  top: 3%;
+  float: right;
+  margin-right: 3%;
+}
+
+.videoControlTools {
+  display: flex;
+  justify-content: center;
+  margin: 0px 17%;
+}
+
+.audioBtn {
+  background-color: #5271ff;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin: 0.5px 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.audioBtn1 {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin: 0.5px 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.videoBtn {
+  background-color: #5271ff;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin: 0.5px 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.videoBtn1 {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin: 0.5px 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.peer1Video {
+  cursor: pointer;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.callId1 {
+  position: relative;
+  height: 5%;
+  /* width: 30%; */
+  display: flex;
+  top: 15%;
+  left: 15%;
+}
+
+.id {
+  border: 1px solid grey;
+  border-radius: 2%;
+  height: 70%;
+  width: 20%;
+  margin-right: 2%;
+  padding: 1%;
+  font-size: large;
+  background-color: white;
+  overflow-x: auto;
+  font-family: monospace;
+}
+
+.copyBtn {
+  position: relative;
+  height: 120%;
+  width: 20%;
+  text-align: center;
+  display: inline-block;
+  background-color: #5271ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+  font-family: monospace;
+}
+
+.copyBtn:active {
+  background: #3549a5;
+}
+
+.acceptRequest {
+  top: 20%;
+  left: 20%;
+}
+
+.userData {
+  position: relative;
+  top: 10%;
+  left: 5%;
+  height: 2%;
+}
+
+.name {
+  height: 100%;
+  margin: 2%;
+  padding: 1%;
+  font-size: large;
+  font-family: monospace;
+}
+
+.callId2 {
+  height: 100%;
+  margin: 2%;
+  padding: 1%;
+  font-size: large;
+  font-family: monospace;
+}
+
+.joinBtn {
+  position: relative;
+  height: 7%;
+  width: 15%;
+  background-color: #5271ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+  top: 17%;
+  left: 25%;
+  font-family: monospace;
+}
+
+.joinBtn:active {
+  background: #3549a5;
+}
+
+.endBtn {
+  position: relative;
+  /* height: 5%; */
+  width: 12%;
+  padding: 1%;
+  background-color: red;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  top: 5%;
+  left: 80%;
+  font-family: monospace;
+}
+
+.endBtn:active {
+  background: rgb(114, 4, 4);
+}
+
+.callRequestdiv {
+  position: fixed;
+  height: 20%;
+  width: 40%;
+  left: 30%;
+  border: 2px solid rgb(68, 68, 68);
+  border-radius: 5px;
+  padding: 1%;
+  color: rgb(102, 98, 98);
+  z-index: 100;
+  top: 2%;
+  background-color: #e0f0fd;
+  align-items: center;
+  text-align: center;
+  box-shadow: 2px 2px;
+}
+
+.callRequestdiv:active {
+  background-color: #c1c1c1;
+}
+
+.acceptBtn {
+  position: relative;
+  cursor: pointer;
+  padding: 1%;
+  background-color: #5271ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: white;
+  margin-left: 5%;
+  font-family: monospace;
+}
+
+.rejectBtn {
+  position: relative;
+  cursor: pointer;
+  padding: 1%;
+  background-color: #5271ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: white;
+  font-family: monospace;
+}
+
+
+/* Question Pannel CSS */
+
+.questionPannel {
+  height: 100%;
+  width: 40%;
+  /* border-top: 1px solid grey; */
+}
+
+.qpannelHeader {
+  font-family: monospace;
+  color: white;
+  text-align: center;
+  padding-top: 2%;
+  height: 5%;
+  background-color: #5271ff;
+  font-weight: 700;
+  font-size: large;
+}
+
+.questionWindow {
+  font-family: monospace;
+  height: 74%;
+  background-color: white;
+}
+
+.qpannelFooter {
+  height: 6%;
+  display: flex;
+}
+
+.editorToggle {
+  margin-left: 2%;
+  position: relative;
+  width: 20%;
+  height: 80%;
+  text-align: center;
+  /* display: inline-block; */
+  background-color: #5271ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  top: 10%;
+  /* left: 75%; */
+  color: white;
+}
+
+.editorToggle1 {
+  margin-left: 2%;
+  position: relative;
+  width: 20%;
+  height: 80%;
+  text-align: center;
+  /* display: inline-block; */
+  background-color: #3549a5;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  top: 10%;
+  /* left: 75%; */
+  color: white;
+}
+
+
+.resetBtn {
+  margin-left: 2%;
+  position: relative;
+  width: 20%;
+  height: 80%;
+  text-align: center;
+  /* display: inline-block; */
+  background-color: #5271ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  top: 10%;
+  /* left: 75%; */
+  color: white;
+
+}
+
+.questionHeading {
+  padding: 2%;
+  background: #e6dddd;
+  font-size: large;
+  font-weight: 600;
+}
+
+.questionBody {
+  padding: 2%;
+  overflow-y: scroll;
+  font-family: monospace;
+  font-size: larger;
+  height: 86%;
+}

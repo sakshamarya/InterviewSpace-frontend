@@ -1,0 +1,9 @@
+.main {
+  position: absolute;
+  overflow-y: scroll;
+  height: 38.5rem;
+  width: 100%;
+  background-color: #e0f0fd;
+  padding-left: auto;
+  padding-right: auto;
+}

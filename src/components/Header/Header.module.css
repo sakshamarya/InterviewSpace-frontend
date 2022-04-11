@@ -1,0 +1,39 @@
+.navBar {
+  margin-top: 0;
+  position: relative;
+  height: 1.5rem;
+  margin: 1.3rem;
+  display: flex;
+  padding: 1%;
+}
+
+.logo {
+  position: relative;
+  bottom: 20px;
+  margin-left: 20px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.pastSessions {
+  top: 0.3rem;
+}
+
+.pastSessionsText {
+  color: gray;
+}
+
+.login {
+  margin-left: 1rem;
+}
+
+.rightHeader {
+  position: relative;
+  bottom: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 100px;
+  margin-left: auto;
+  display: flex;
+
+}

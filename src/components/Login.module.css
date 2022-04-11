@@ -1,0 +1,9 @@
+.main {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #e0f0fd;
+  /* padding: 4% 30%; */
+  padding-left: auto;
+  padding-right: auto;
+}
