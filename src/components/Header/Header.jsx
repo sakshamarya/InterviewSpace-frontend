@@ -34,7 +34,10 @@ export default function Header(props) {
           clientId={clientId}
           buttonText="Login"
           onSuccess={props.m1}
-          onFailure={props.m2}
+          onFailure={(err)=>{
+            console.log(err);
+            props.m2;
+          }}
           cookiePolicy={'single_host_origin'}
           />
         ):(
