@@ -41,7 +41,7 @@ export default function Header(props) {
           onSuccess={props.m1}
           onFailure={err => {
             console.log('login fail', err);
-            prompt("Some error occured while loging in. Try clearing browser cache");
+            alert("Some error occured while loging in. Try clearing browser cache");
           }}
           cookiePolicy={'single_host_origin'}
           />
