@@ -9,6 +9,11 @@ export default function Header(props) {
 
   const clientId = "264308279201-5i0s2bgttq0t6sm9e0neri0a8kd1s8rv.apps.googleusercontent.com";
 
+  // function failedLogin(err){
+  //   console.log(err);
+  //     props.m2;
+  // }
+
   return (
     <div className={styles.navBar}>
       <Link to="/">
@@ -34,10 +39,7 @@ export default function Header(props) {
           clientId={clientId}
           buttonText="Login"
           onSuccess={props.m1}
-          onFailure={(err)=>{
-            console.log(err);
-            props.m2;
-          }}
+          onFailure={err => console.log('login fail', err)}
           cookiePolicy={'single_host_origin'}
           />
         ):(
