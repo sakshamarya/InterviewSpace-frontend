@@ -14,9 +14,9 @@ export default function AboutUs(props) {
   async function getSessionRecords(id)
   {
     console.log(id);
-    const res = await axios.post("http://localhost:5000/getSessionRecords");
+    const res = await axios.post("https://interviewspace-backend.herokuapp.com/getSessionRecords");
 
-    axios.post("http://localhost:5000/getSessionRecords",{id}).then((res)=>{
+    axios.post("https://interviewspace-backend.herokuapp.com/getSessionRecords",{id}).then((res)=>{
 
       // console.log(res);
       console.log(res.data);

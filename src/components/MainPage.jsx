@@ -14,7 +14,7 @@ import CodeMirror from '@uiw/react-codemirror';
 
 
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://interviewspace-backend.herokuapp.com/");
 
 export default function MainPage(props) {
   const type = props.type;
@@ -77,7 +77,7 @@ export default function MainPage(props) {
       description: [],
     };
 
-    axios.get("http://localhost:5000/getQuestion").then((res)=>{
+    axios.get("https://interviewspace-backend.herokuapp.com//getQuestion").then((res)=>{
         newQuestion=res.data;
 
         // pusing new question link to list of all clients in the room
@@ -186,7 +186,7 @@ export default function MainPage(props) {
         // refresh page
         window.location.reload(false);
 
-        const res = await axios.post("http://localhost:5000/insertSessionDetails",{createSession});
+        const res = await axios.post("https://interviewspace-backend.herokuapp.com//insertSessionDetails",{createSession});
         console.log("storing session to mongoDb");
       } catch (error) {
         console.log(error);

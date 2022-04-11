@@ -34,7 +34,7 @@ function App() {
   }
 
   function onLoginFailure() {
-    console.log("Logout failed");
+    console.log("Login failed");
   }
 
   function onSignoutSuccess() {
