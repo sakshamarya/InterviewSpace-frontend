@@ -519,7 +519,14 @@ export default function MainPage(props) {
             />
           </div>
 
-          <button
+          {callConnected? (
+              <button
+              className={styles.joinBtn}
+            >
+              Call Joined
+            </button>
+          ):(
+            <button
             className={styles.joinBtn}
             onClick={() => {
               console.log("join button pressed");
@@ -528,6 +535,9 @@ export default function MainPage(props) {
           >
             Join Call
           </button>
+          )}
+
+          
 
           {/* <Draggable> */}
           <div className={styles.peer1Div}>
