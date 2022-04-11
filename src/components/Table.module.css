@@ -11,6 +11,7 @@ table th{
 
 table th,table td{
     border: 0.2rem solid #ddd;
+    background-color: white;
     padding: 2%;
     font-family: monospace;
     font-size: 1rem;
