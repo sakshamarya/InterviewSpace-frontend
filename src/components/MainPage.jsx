@@ -81,10 +81,12 @@ export default function MainPage(props) {
         newQuestion=res.data;
 
         // pusing new question link to list of all clients in the room
+        socket.emit("updateQuestionList",caller,newQuestion.link);
         socket.emit("updateQuestionList",me,newQuestion.link);
 
 
         console.log("Question becomes ", newQuestion);
+        socket.emit("showQuestion",caller,newQuestion);
         socket.emit("showQuestion",me,newQuestion);
     }).catch((err)=>{
       return err;
@@ -158,14 +160,34 @@ export default function MainPage(props) {
       setCallerSignal(data.signal);
     });
 
-    // on pressing back button, stop the getUserMedia stream
+    // on pressing back button, leave call
     window.onpopstate = () => {
       console.log("back button pressed");
-      // console.log(stream);
-      // stream.getTracks().forEach(function (track) {
-      //   track.stop();
-      // });
+
+      if(idToCall.length)
+      {
+        leaveCall(idToCall);
+      }
+      
+      if(caller.length)
+      {
+        leaveCall(caller);
+      }
     };
+
+    // on closing or reloadin window, leave call
+
+    window.addEventListener('beforeunload',(event) => {
+      if(idToCall.length)
+      {
+        leaveCall(idToCall);
+      }
+      
+      if(caller.length)
+      {
+        leaveCall(caller);
+      }
+  });
 
     // action on socket onQuestion event
     socket.on("showQuestion",(roomId,questionObject)=>{
@@ -210,7 +232,7 @@ export default function MainPage(props) {
   }, []);
 
   const callUser = (id) => {
-    socket.emit("joinRoom", idToCall);
+    // socket.emit("joinRoom", idToCall);
 
     const peer = new Peer({
       initiator: true,
@@ -243,7 +265,7 @@ export default function MainPage(props) {
 
   const answerCall = () => {
     
-    socket.emit("joinRoom", me);
+    // socket.emit("joinRoom", me);
     setCallAccepted(true);
     setRecievingCall(false);
 
@@ -276,11 +298,11 @@ export default function MainPage(props) {
     setRecievingCall(false);
   };
 
-  const leaveCall = () => {
+  const leaveCall = (otherPersonsId) => {
 
 
 
-    socket.emit("onLeaveCall",me,idToCall);
+    socket.emit("onLeaveCall",me,otherPersonsId);
 
     // setCallEnded(true);
     // setCallAccepted(false);
@@ -337,7 +359,7 @@ export default function MainPage(props) {
               className={styles.endBtn}
               onClick={() => {
                 console.log("end call button pressed");
-                leaveCall();
+                leaveCall(caller);
               }}
               >
                 End Call
@@ -412,7 +434,7 @@ export default function MainPage(props) {
                       setEditorValue(value);
                     }}
                     onKeyUp={(editor, event) => {
-                    socket.emit("changeEditorValue",editorValue,me);
+                    socket.emit("changeEditorValue",editorValue,caller);
                     console.log('value in editor is', editorValue);
                   }}
                   />
@@ -479,7 +501,7 @@ export default function MainPage(props) {
             className={styles.endBtn}
             onClick={() => {
               console.log("end call button pressed");
-              leaveCall();
+              leaveCall(idToCall);
             }}
             >
               End Call
