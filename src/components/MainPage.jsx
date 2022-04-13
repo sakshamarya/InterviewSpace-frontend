@@ -236,8 +236,9 @@ export default function MainPage(props) {
 
     const peer = new Peer({
       initiator: true,
-      trickle: false,
+      trickle: true,
       stream: stream,
+      config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:global.stun.twilio.com:3478?transport=udp' }] },
     });
 
     peer.on("signal", (data) => {
@@ -271,8 +272,9 @@ export default function MainPage(props) {
 
     const peer = new Peer({
       initiator: false,
-      trickle: false,
+      trickle: true,
       stream: stream,
+      config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:global.stun.twilio.com:3478?transport=udp' }] },
     });
 
     peer.on("signal", (data) => {
