@@ -27,6 +27,7 @@
     "react-simple-typewriter": "^3.0.1",
     "react-typewriter-effect": "^1.1.0",
     "simple-peer": "^9.11.0",
+    "simple-peer-wrapper": "0.0.4",
     "socket.io-client": "^4.4.1",
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.4"
