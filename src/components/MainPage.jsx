@@ -238,7 +238,14 @@ export default function MainPage(props) {
       initiator: true,
       trickle: false,
       stream: stream,
-      config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:global.stun.twilio.com:3478?transport=udp' }] },
+      config: { iceServers: [
+        { url: 'stun:stun.l.google.com:19302' },
+        {
+          url: 'turn:numb.viagenie.ca',
+          credential: 'muazkh',
+          username: 'webrtc@live.com'
+        },
+      ] }
     });
 
     peer.on("signal", (data) => {
@@ -275,7 +282,12 @@ export default function MainPage(props) {
       trickle: false,
       stream: stream,
       config: { iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' }
+        { urls: 'stun:stun.l.google.com:19302' },
+        {
+          urls: 'turn:numb.viagenie.ca',
+          credential: 'muazkh',
+          username: 'webrtc@live.com'
+        },
       ] },
     });
 
