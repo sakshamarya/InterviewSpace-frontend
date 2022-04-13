@@ -9,18 +9,12 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import CodeMirror from '@uiw/react-codemirror';
-const SimplePeerWrapper = require('simple-peer-wrapper');
+// import {Controlled as CodeMirror} from 'react-codemirror2'
 // codemirror documentation : https://uiwjs.github.io/react-codemirror/
 
 
-// simple-peer-wrapper to setup STUN server on client side
 
-const options = {
-  serverUrl: 'https://interviewspace-backend.herokuapp.com',
-};
-
-
-let socket;
+const socket = io.connect("https://interviewspace-backend.herokuapp.com");
 
 export default function MainPage(props) {
   const type = props.type;
@@ -139,19 +133,6 @@ export default function MainPage(props) {
 
   useEffect(() => {
 
-    socket = io.connect("https://interviewspace-backend.herokuapp.com");
-
-    // setting up simple peer wraper
-
-    const spw = new SimplePeerWrapper(options);
-    spw.connect();
-
-    spw.on('data',(data)=>{
-      const partnerData = data.data;
-      console.log(partnerData);
-    });
-
-
     createSession.current.userName = props.profile.name;
     createSession.current.userEmail = props.profile.email;
     const current = new Date();
@@ -194,9 +175,9 @@ export default function MainPage(props) {
       }
     };
 
-    // on closing window, leave call
+    // on closing or reloadin window, leave call
 
-    window.onbeforeunload = ()=>{
+    window.addEventListener('beforeunload',(event) => {
       if(idToCall.length)
       {
         leaveCall(idToCall);
@@ -206,8 +187,7 @@ export default function MainPage(props) {
       {
         leaveCall(caller);
       }
-      spw.close();
-    }
+  });
 
     // action on socket onQuestion event
     socket.on("showQuestion",(roomId,questionObject)=>{
