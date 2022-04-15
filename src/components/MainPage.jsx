@@ -236,12 +236,12 @@ export default function MainPage(props) {
 
     const peer = new Peer({
       initiator: true,
-      trickle: false,
+      trickle: true,
       stream: stream,
       config: { iceServers: [
-        { url: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun.l.google.com:19302' },
         {
-          url: 'turn:numb.viagenie.ca',
+          urls: 'turn:numb.viagenie.ca',
           credential: 'muazkh',
           username: 'webrtc@live.com'
         },
@@ -278,8 +278,8 @@ export default function MainPage(props) {
     setRecievingCall(false);
 
     const peer = new Peer({
-      initiator: false,
-      trickle: false,
+      initiator: true,
+      trickle: true,
       stream: stream,
       config: { iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
