@@ -241,9 +241,9 @@ export default function MainPage(props) {
       config: { iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
         {
-          urls: 'turn:turn.bistri.com:80',
-          credential: 'homeo',
-          username: 'homeo'
+          urls: 'turn:numb.viagenie.ca',
+          credential: 'muazkh',
+          username: 'webrtc@live.com'
         },
       ] },
     });
@@ -284,9 +284,9 @@ export default function MainPage(props) {
       config: { iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
         {
-          urls: 'turn:turn.bistri.com:80',
-          credential: 'homeo',
-          username: 'homeo'
+          urls: 'turn:numb.viagenie.ca',
+          credential: 'muazkh',
+          username: 'webrtc@live.com'
         },
       ] },
     });
