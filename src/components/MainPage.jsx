@@ -281,14 +281,14 @@ export default function MainPage(props) {
       initiator: false,
       trickle: false,
       stream: stream,
-      config: { iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' },
-        {
-          urls: 'turn:numb.viagenie.ca',
-          credential: 'muazkh',
-          username: 'webrtc@live.com'
-        },
-      ] },
+      // config: { iceServers: [
+      //   { urls: 'stun:stun.l.google.com:19302' },
+      //   {
+      //     urls: 'turn:numb.viagenie.ca',
+      //     credential: 'muazkh',
+      //     username: 'webrtc@live.com'
+      //   },
+      // ] },
     });
 
     peer.on("signal", (data) => {
