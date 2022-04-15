@@ -236,16 +236,16 @@ export default function MainPage(props) {
 
     const peer = new Peer({
       initiator: true,
-      trickle: true,
+      trickle: false,
       stream: stream,
       config: { iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
         {
-          urls: 'turn:numb.viagenie.ca',
-          credential: 'muazkh',
-          username: 'webrtc@live.com'
+          urls: 'turn:13.250.13.83:3478?transport=udp',
+          credential: 'YzYNCouZM1mhqhmseWk6',
+          username: 'YzYNCouZM1mhqhmseWk6'
         },
-      ] }
+      ] },
     });
 
     peer.on("signal", (data) => {
@@ -278,15 +278,15 @@ export default function MainPage(props) {
     setRecievingCall(false);
 
     const peer = new Peer({
-      initiator: true,
-      trickle: true,
+      initiator: false,
+      trickle: false,
       stream: stream,
       config: { iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
         {
-          urls: 'turn:numb.viagenie.ca',
-          credential: 'muazkh',
-          username: 'webrtc@live.com'
+          urls: 'turn:13.250.13.83:3478?transport=udp',
+          credential: 'YzYNCouZM1mhqhmseWk6',
+          username: 'YzYNCouZM1mhqhmseWk6'
         },
       ] },
     });
