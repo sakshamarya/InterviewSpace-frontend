@@ -279,8 +279,6 @@ export default function MainPage(props) {
     connectionRef.current = peer;
   };
 
-  
-
   const answerCall = () => {
     
     // socket.emit("joinRoom", me);
