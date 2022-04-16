@@ -241,9 +241,19 @@ export default function MainPage(props) {
       config: { iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
         {
-          urls: 'turn:numb.viagenie.ca',
-          credential: 'muazkh',
-          username: 'webrtc@live.com'
+          urls: "turn:openrelay.metered.ca:80",
+          username: "openrelayproject",
+          credential: "openrelayproject",
+        },
+        {
+          urls: "turn:openrelay.metered.ca:443",
+          username: "openrelayproject",
+          credential: "openrelayproject",
+        },
+        {
+          urls: "turn:openrelay.metered.ca:443?transport=tcp",
+          username: "openrelayproject",
+          credential: "openrelayproject",
         },
       ] },
     });
@@ -281,14 +291,24 @@ export default function MainPage(props) {
       initiator: false,
       trickle: false,
       stream: stream,
-      // config: { iceServers: [
-      //   { urls: 'stun:stun.l.google.com:19302' },
-      //   {
-      //     urls: 'turn:numb.viagenie.ca',
-      //     credential: 'muazkh',
-      //     username: 'webrtc@live.com'
-      //   },
-      // ] },
+      config: { iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' },
+        {
+          urls: "turn:openrelay.metered.ca:80",
+          username: "openrelayproject",
+          credential: "openrelayproject",
+        },
+        {
+          urls: "turn:openrelay.metered.ca:443",
+          username: "openrelayproject",
+          credential: "openrelayproject",
+        },
+        {
+          urls: "turn:openrelay.metered.ca:443?transport=tcp",
+          username: "openrelayproject",
+          credential: "openrelayproject",
+        },
+      ] },
     });
 
     peer.on("signal", (data) => {
