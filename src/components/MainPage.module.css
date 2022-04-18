@@ -22,7 +22,7 @@
 .main {
   position: absolute;
   overflow-y: scroll;
-  height: 86%;
+  height: 86.3%;
   width: 100%;
   background-color: #e0f0fd;
   /* padding: 4% 30%; */
@@ -41,7 +41,7 @@
   position: relative;
   height: 50%;
   width: 65%;
-  border: 1px solid grey;
+  border: 1px solid #5271ff;
   top: 15%;
   left: 15%;
   background-color: black;
@@ -263,7 +263,7 @@
   height: 20%;
   width: 40%;
   left: 30%;
-  border: 2px solid rgb(68, 68, 68);
+  border: 3px solid #5271ff;
   border-radius: 5px;
   padding: 1%;
   color: rgb(102, 98, 98);
@@ -272,7 +272,7 @@
   background-color: #e0f0fd;
   align-items: center;
   text-align: center;
-  box-shadow: 2px 2px;
+  box-shadow: 1px 1px #5271ff;
 }
 
 .callRequestdiv:active {

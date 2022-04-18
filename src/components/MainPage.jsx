@@ -1,14 +1,16 @@
+// Free STUN and TURN servers: https://www.metered.ca/tools/openrelay/
+// working stun server has atleast 1 candidate with type 'srflx' and working TURN server has atleast 1 candidate of type 'relay', check type at https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
+
 import React from "react";
 import styles from "./MainPage.module.css";
-import QuestionPannel from "./QuestionPannel";
 import { useState, useEffect, useRef } from "react";
-import Draggable from "react-draggable";
 import Peer from "simple-peer";
 import io, { Socket } from "socket.io-client";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import CodeMirror from '@uiw/react-codemirror';
+import useSound from 'use-sound';
 // import {Controlled as CodeMirror} from 'react-codemirror2'
 // codemirror documentation : https://uiwjs.github.io/react-codemirror/
 
@@ -223,7 +225,7 @@ export default function MainPage(props) {
     })
 
     socket.on("changeEditorValue",(newValue,id)=>{
-      console.log("changing editor's value to ", newValue);
+      // console.log("changing editor's value to ", newValue);
 
       setEditorValue(newValue);
       
@@ -354,7 +356,7 @@ export default function MainPage(props) {
     <div className={styles.main}>
       {type == "interviewer" ? (
         <>
-          {recievingCall && !callAccepted ? (
+          {(recievingCall && !callAccepted) ? (
             <div className={styles.callRequestdiv}>
               <h1>{name} wants to join the call !</h1>
               <button className={styles.rejectBtn} onClick={ignoreCall}>
@@ -449,7 +451,7 @@ export default function MainPage(props) {
                     }}
                     onKeyUp={(editor, event) => {
                     socket.emit("changeEditorValue",editorValue,caller);
-                    console.log('value in editor is', editorValue);
+                    // console.log('value in editor is', editorValue);
                   }}
                   />
 
@@ -622,7 +624,7 @@ export default function MainPage(props) {
                     }}
                     onKeyUp={(editor, event) => {
                     socket.emit("changeEditorValue",editorValue,idToCall);
-                    console.log('value in editor is', editorValue);
+                    // console.log('value in editor is', editorValue);
                   }}
                   />
                   ):(

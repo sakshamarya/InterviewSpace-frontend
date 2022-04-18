@@ -1,6 +1,5 @@
 import Header from './components/Header/Header'
 import Home from './components/Home';
-import Login from './components/Login';
 import PastSessions from './components/PastSessions';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GetStarted from './components/GetStarted';
@@ -55,7 +54,6 @@ function App() {
             <Header m1={onLoginSuccess} m2={onLoginFailure} m3={onSignoutSuccess} loginButton={showLoginButton} logoutButton={showLogoutButton} />
             <Routes>
               <Route exact path="/" element={<Home loginButton={showLoginButton} />} />
-              <Route exact path="/login" element={<Home loginButton={showLoginButton} />} />
               <Route exact path="/pastsessions" element={<Home loginButton={showLoginButton} />} />
               <Route exact path="/getstarted" element={<Home loginButton={showLoginButton} />} />
               <Route exact path="/mainpage" element={<Home loginButton={showLoginButton} />} />
@@ -69,7 +67,6 @@ function App() {
             <Header m1={onLoginSuccess} m2={onLoginFailure} m3={onSignoutSuccess} loginButton={showLoginButton} logoutButton={showLogoutButton} />
             <Routes>
               <Route exact path="/" element={<Home loginButton={showLoginButton} />} />
-              <Route exact path="/login" element={<Login />} />
               <Route exact path="/pastsessions" element={<PastSessions email={profileObject.email} />} />
               <Route exact path="/getstarted" element={<GetStarted />} />
               <Route exact path="/mainpage" element={<MainPage type="interviewer" profile={profileObject} />} />

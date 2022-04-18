@@ -7,7 +7,7 @@
 
 .main {
   position: absolute;
-  height: 86%;
+  height: 86.3%;
   width: 80%;
   background-color: #e0f0fd;
   padding: 0 10%;
@@ -76,3 +76,25 @@
   /* border: 3px solid #5271ff; */
   border-radius: 10px;
 }
+
+.footer{
+  position: absolute;
+  text-align: center;
+  width: 50%;
+  padding: 0.5%;
+  margin-left: 16%;
+  top: 92%;
+  color: #5271ff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+a, a:visited{
+  text-decoration: none;
+  color: #5271ff;
+}
+
+/* span{
+  font-size: 1rem;
+} */
