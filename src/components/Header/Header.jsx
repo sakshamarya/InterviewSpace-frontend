@@ -35,6 +35,7 @@ export default function Header(props) {
 
         {props.loginButton? (
           <GoogleLogin
+          isSignedIn={true}
           className={styles.login}
           clientId={clientId}
           buttonText="Login"
