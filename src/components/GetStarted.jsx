@@ -8,7 +8,7 @@ export default function GetStarted() {
       <div className={styles.mainText}>
         <p className={styles.heading}>USERS CAN JOIN EITHER AS AN INTERVIEWER OR AS AN INTERVIEWEE.</p>
         <p><span className={styles.heading}>Joining as an Interviewer:</span> If someone join as an Interviewer, he/she will get a unique room ID which the interviewee has to enter in order to join the interview room.</p>
-        <p><span className={styles.heading}>Joining as an Interviewee:</span> If someone join as an Interviewee, he/she will have to enter a unique room ID that has been given by an interviewer order to join the interview room.</p>
+        <p><span className={styles.heading}>Joining as an Interviewee:</span> If someone join as an Interviewee, he/she will have to enter a unique room ID that has been given by an interviewer in order to join the interview room.</p>
 
         
 
