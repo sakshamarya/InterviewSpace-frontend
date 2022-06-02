@@ -15,8 +15,11 @@ import useSound from 'use-sound';
 // codemirror documentation : https://uiwjs.github.io/react-codemirror/
 
 
-
+// For Production
 const socket = io.connect("https://interviewspace-backend.herokuapp.com");
+
+// for development
+// const socket = io.connect("http://localhost:5000");
 
 export default function MainPage(props) {
   const type = props.type;
@@ -37,6 +40,12 @@ export default function MainPage(props) {
     heading: "",
     description: [],
   });
+
+
+  const [stunURL, setStunUrl] = useState("")
+  const [turnURL, setTurnUrl] = useState("");
+  const [turnUsername, setTurnUsername] = useState("");
+  const [turnPass, setTurnPass] = useState("");
 
   const [toggleEditor, setToggleEditor] = useState(false);
   const [toggleEditorStyle, setToggleEditorStyle] = useState(styles.editorToggle);
@@ -70,6 +79,7 @@ export default function MainPage(props) {
 
   const [editorValue, setEditorValue] = useState("");
 
+
   function setNewQuestion()
   {
     
@@ -78,6 +88,8 @@ export default function MainPage(props) {
       heading: "",
       description: [],
     };
+
+    // For production
 
     axios.get("https://interviewspace-backend.herokuapp.com/getQuestion").then((res)=>{
         newQuestion=res.data;
@@ -93,6 +105,25 @@ export default function MainPage(props) {
     }).catch((err)=>{
       return err;
     })
+
+    // For Development
+
+    // axios.get("http://localhost:5000/getQuestion").then((res)=>{
+    //     newQuestion=res.data;
+
+    //     // pusing new question link to list of all clients in the room
+    //     socket.emit("updateQuestionList",caller,newQuestion.link);
+    //     socket.emit("updateQuestionList",me,newQuestion.link);
+
+
+    //     console.log("Question becomes ", newQuestion);
+    //     socket.emit("showQuestion",caller,newQuestion);
+    //     socket.emit("showQuestion",me,newQuestion);
+    // }).catch((err)=>{
+    //   return err;
+    // })
+
+
 
     
   }
@@ -134,6 +165,32 @@ export default function MainPage(props) {
   }
 
   useEffect(() => {
+
+    // For Production
+
+    axios.get("https://interviewspace-backend.herokuapp.com/twilioServers").then((res)=>{
+
+      setStunUrl(res.stunURL);
+      setTurnUrl(res.turnURL);
+      setTurnUsername(res.turnUsername);
+      setTurnPass(res.turnPass);
+        
+    }).catch((err)=>{
+      return err;
+    })
+
+    // For Development
+
+    // axios.get("http://localhost:5000/twilioServers").then((res)=>{
+    //   setStunUrl(res.stunURL);
+    //   setTurnUrl(res.turnURL);
+    //   setTurnUsername(res.turnUsername);
+    //   setTurnPass(res.turnPass);
+        
+    // }).catch((err)=>{
+    //   return err;
+    // })
+
 
     createSession.current.userName = props.profile.name;
     createSession.current.userEmail = props.profile.email;
@@ -210,11 +267,21 @@ export default function MainPage(props) {
         // refresh page
         window.location.reload(false);
 
+        // For Production
+
         const res = await axios.post("https://interviewspace-backend.herokuapp.com/insertSessionDetails",{createSession});
-        console.log("storing session to mongoDb");
-      } catch (error) {
-        console.log(error);
-      }
+          console.log("storing session to mongoDb");
+        } catch (error) {
+          console.log(error);
+        }
+
+        // For Development
+
+        // const res = await axios.post("http://localhost:5000/insertSessionDetails",{createSession});
+        //   console.log("storing session to mongoDb");
+        // } catch (error) {
+        //   console.log(error);
+        // }
 
 
     });  
@@ -241,11 +308,11 @@ export default function MainPage(props) {
       trickle: false,
       stream: stream,
       config: { iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: stunURL},
         {
-          urls: "turn:openrelay.metered.ca:80",
-          username: "openrelayproject",
-          credential: "openrelayproject",
+          urls: turnURL,
+          username: turnUsername,
+          credential: turnPass,
         }
       ] },
     });
@@ -282,11 +349,11 @@ export default function MainPage(props) {
       trickle: false,
       stream: stream,
       config: { iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: stunURL },
         {
-          urls: "turn:openrelay.metered.ca:80",
-          username: "openrelayproject",
-          credential: "openrelayproject",
+          urls: turnURL,
+          username: turnUsername,
+          credential: turnPass,
         }
       ] },
     });
