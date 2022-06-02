@@ -170,10 +170,10 @@ export default function MainPage(props) {
 
     axios.get("https://interviewspace-backend.herokuapp.com/twilioServers").then((res)=>{
 
-      setStunUrl(res.stunURL);
-      setTurnUrl(res.turnURL);
-      setTurnUsername(res.turnUsername);
-      setTurnPass(res.turnPass);
+      setStunUrl(res.data.stunURL);
+      setTurnUrl(res.data.turnURL);
+      setTurnUsername(res.data.turnUsername);
+      setTurnPass(res.data.turnPass);
         
     }).catch((err)=>{
       return err;
@@ -190,7 +190,6 @@ export default function MainPage(props) {
     // }).catch((err)=>{
     //   return err;
     // })
-
 
     createSession.current.userName = props.profile.name;
     createSession.current.userEmail = props.profile.email;
@@ -302,17 +301,17 @@ export default function MainPage(props) {
 
   const callUser = (id) => {
     // socket.emit("joinRoom", idToCall);
-
+    
     const peer = new Peer({
       initiator: true,
       trickle: false,
       stream: stream,
       config: { iceServers: [
-        { urls: stunURL},
+        { urls: "stun:global.stun.twilio.com:3478?transport=udp"},
         {
-          urls: turnURL,
-          username: turnUsername,
-          credential: turnPass,
+          urls: "turn:global.turn.twilio.com:3478?transport=udp",
+          username: "29e38d1248e3812acf7b3a2c6c3c2e0a56f1105cd28050922e3849d45783fcdf",
+          credential: "Sf+XMUkIhFNkAtfVbz3KT/wYcVfjDt64UbrGNPgxm7I=",
         }
       ] },
     });
@@ -349,11 +348,11 @@ export default function MainPage(props) {
       trickle: false,
       stream: stream,
       config: { iceServers: [
-        { urls: stunURL },
+        { urls: "stun:global.stun.twilio.com:3478?transport=udp"},
         {
-          urls: turnURL,
-          username: turnUsername,
-          credential: turnPass,
+          urls: "turn:global.turn.twilio.com:3478?transport=udp",
+          username: "29e38d1248e3812acf7b3a2c6c3c2e0a56f1105cd28050922e3849d45783fcdf",
+          credential: "Sf+XMUkIhFNkAtfVbz3KT/wYcVfjDt64UbrGNPgxm7I=",
         }
       ] },
     });
