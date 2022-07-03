@@ -3,9 +3,25 @@ import styles from "./PastSessions.module.css";
 import axios from "axios";
 import Table from "./Table";
 
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import Backdrop from "@material-ui/core/Backdrop";
+
+
 import { useState, useEffect } from "react";
 
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+      color: "#fff",
+      zIndex: theme.zIndex.drawer + 1,
+  },
+}));
+
 export default function AboutUs(props) {
+
+  const classes = useStyles();
+
+  const [loading, setLoading]  = useState(false);
   
   const [dataTable, setDataTable] = useState([]);
 
@@ -13,6 +29,8 @@ export default function AboutUs(props) {
 
   async function getSessionRecords(id)
   {
+    setLoading(true);
+
     console.log(id);
     const res = await axios.post("https://interviewspace-backend.herokuapp.com/getSessionRecords");
 
@@ -21,9 +39,11 @@ export default function AboutUs(props) {
       // console.log(res);
       console.log(res.data);
       setDataTable(res.data);
+      setLoading(false);
 
     }).catch((error)=>{
       console.log(error);
+      setLoading(false);
     })
   }
   
@@ -51,6 +71,15 @@ export default function AboutUs(props) {
 
   return (
     <div className={styles.main}>
+
+      {loading? (
+          <Backdrop
+            className={classes.backdrop}
+            open
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+      ):(null)}
 
     {dataTable===[] ? (
       <h>Fetching Data ...</h>

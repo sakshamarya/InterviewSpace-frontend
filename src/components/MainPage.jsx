@@ -11,6 +11,9 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import CodeMirror from '@uiw/react-codemirror';
 import useSound from 'use-sound';
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import Backdrop from "@material-ui/core/Backdrop";
 // import {Controlled as CodeMirror} from 'react-codemirror2'
 // codemirror documentation : https://uiwjs.github.io/react-codemirror/
 
@@ -21,7 +24,19 @@ const socket = io.connect("https://interviewspace-backend.herokuapp.com");
 // for development
 // const socket = io.connect("http://localhost:5000");
 
+// loader
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+      color: "#fff",
+      zIndex: theme.zIndex.drawer + 1,
+  },
+}));
+
 export default function MainPage(props) {
+
+  const classes = useStyles();
+  const [loading, setLoading]  = useState(false);
+
   const type = props.type;
   // console.log(type);
 
@@ -257,6 +272,8 @@ export default function MainPage(props) {
     // action on leaveCall button pressed
     socket.on("onLeaveCall",async (id1,id2)=>{
 
+      window.location.pathname = "/";
+
       // storing session to database
 
       try {
@@ -264,12 +281,14 @@ export default function MainPage(props) {
         // console.log("navigating to homepage");
         // <Navigate to="/"/>
         // refresh page
-        window.location.reload(false);
+        // window.location.reload(false);
 
         // For Production
 
-        const res = await axios.post("https://interviewspace-backend.herokuapp.com/insertSessionDetails",{createSession});
+          const res = await axios.post("https://interviewspace-backend.herokuapp.com/insertSessionDetails",{createSession});
           console.log("storing session to mongoDb");
+          // go to home page
+
         } catch (error) {
           console.log(error);
         }
@@ -300,6 +319,8 @@ export default function MainPage(props) {
   }, []);
 
   const callUser = (id) => {
+
+    setLoading(true);
     // socket.emit("joinRoom", idToCall);
     
     const peer = new Peer({
@@ -330,6 +351,7 @@ export default function MainPage(props) {
     });
 
     socket.on("callAccepted", (signal) => {
+      setLoading(false);
       setCallAccepted(true);
       peer.signal(signal);
     });
@@ -542,7 +564,7 @@ export default function MainPage(props) {
                     <p>
                       <strong>Question Not Clear? </strong>
                       <a href={question.link} target="_blank">
-                        Click here
+                        Original Question Link
                       </a>
                     </p>
                     </div>
@@ -577,6 +599,15 @@ export default function MainPage(props) {
         <>
         
         <div className={styles.videoPannel}>
+
+        {loading? (
+            <Backdrop
+              className={classes.backdrop}
+              open
+            >
+              <CircularProgress color="inherit" />
+            </Backdrop>
+        ):(null)}
 
           {callConnected? (
             <button

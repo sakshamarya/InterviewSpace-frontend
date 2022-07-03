@@ -14,11 +14,13 @@ export default function Header(props) {
   //     props.m2;
   // }
 
+    function homePage(){
+      window.location.pathname = "/";
+    }
+
   return (
     <div className={styles.navBar}>
-      <Link to="/">
-        <img src={logo} alt="Interview Space Logo" className={styles.logo} />
-      </Link>
+        <img src={logo} alt="Interview Space Logo" className={styles.logo} onClick={homePage} />
 
       <div className={styles.rightHeader}>
 
