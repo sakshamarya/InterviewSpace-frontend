@@ -185,10 +185,13 @@ export default function MainPage(props) {
 
     axios.get("https://interviewspace-backend.herokuapp.com/twilioServers").then((res)=>{
 
-      setStunUrl(res.data.stunURL);
-      setTurnUrl(res.data.turnURL);
-      setTurnUsername(res.data.turnUsername);
-      setTurnPass(res.data.turnPass);
+      console.log(res.data.stunURL);
+      console.log(res.data.turnURL);
+      console.log(res.data.turnUsername);
+      console.log(res.data.turnPass);
+      // console.log(turnURL);
+      // console.log(turnUsername);
+      // console.log(turnPass);
         
     }).catch((err)=>{
       return err;
@@ -278,16 +281,10 @@ export default function MainPage(props) {
 
       try {
 
-        // console.log("navigating to homepage");
-        // <Navigate to="/"/>
-        // refresh page
-        // window.location.reload(false);
-
         // For Production
 
           const res = await axios.post("https://interviewspace-backend.herokuapp.com/insertSessionDetails",{createSession});
           console.log("storing session to mongoDb");
-          // go to home page
 
         } catch (error) {
           console.log(error);
@@ -322,6 +319,10 @@ export default function MainPage(props) {
 
     setLoading(true);
     // socket.emit("joinRoom", idToCall);
+
+    console.log(turnURL);
+    console.log(turnPass);
+    console.log(turnUsername);
     
     const peer = new Peer({
       initiator: true,
