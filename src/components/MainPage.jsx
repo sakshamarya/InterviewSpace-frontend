@@ -272,10 +272,11 @@ export default function MainPage(props) {
       setQuestion(questionObject);
     })
 
+
     // action on leaveCall button pressed
     socket.on("onLeaveCall",async (id1,id2)=>{
 
-      window.location.pathname = "/";
+      // window.location.pathname = "/";
 
       // storing session to database
 
@@ -283,8 +284,10 @@ export default function MainPage(props) {
 
         // For Production
 
+        
           const res = await axios.post("https://interviewspace-backend.herokuapp.com/insertSessionDetails",{createSession});
           console.log("storing session to mongoDb");
+          window.location.pathname = "/";
 
         } catch (error) {
           console.log(error);
@@ -297,7 +300,6 @@ export default function MainPage(props) {
         // } catch (error) {
         //   console.log(error);
         // }
-
 
     });  
     

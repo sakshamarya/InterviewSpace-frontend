@@ -27,6 +27,7 @@ export default function AboutUs(props) {
 
   const [mail, setMail]= useState(null);
 
+  
   async function getSessionRecords(id)
   {
     setLoading(true);
