@@ -333,9 +333,9 @@ export default function MainPage(props) {
       config: { iceServers: [
         { urls: "stun:global.stun.twilio.com:3478?transport=udp"},
         {
-          urls: "turn:global.turn.twilio.com:3478?transport=udp",
-          username: "29e38d1248e3812acf7b3a2c6c3c2e0a56f1105cd28050922e3849d45783fcdf",
-          credential: "Sf+XMUkIhFNkAtfVbz3KT/wYcVfjDt64UbrGNPgxm7I=",
+          urls: "turn:turn.kyron.in:80",
+          username: "1659109624:e4ae5613-be9c-4a26-83a2-969c62f8ee8a",
+          credential: "Sm5Qnf84u9vNI4E7s+kxZrExkEk=",
         }
       ] },
     });
@@ -375,9 +375,9 @@ export default function MainPage(props) {
       config: { iceServers: [
         { urls: "stun:global.stun.twilio.com:3478?transport=udp"},
         {
-          urls: "turn:global.turn.twilio.com:3478?transport=udp",
-          username: "29e38d1248e3812acf7b3a2c6c3c2e0a56f1105cd28050922e3849d45783fcdf",
-          credential: "Sf+XMUkIhFNkAtfVbz3KT/wYcVfjDt64UbrGNPgxm7I=",
+          urls: "turn:turn.kyron.in:80",
+          username: "1659109624:e4ae5613-be9c-4a26-83a2-969c62f8ee8a",
+          credential: "Sm5Qnf84u9vNI4E7s+kxZrExkEk=",
         }
       ] },
     });
