@@ -45,9 +45,9 @@ export default function Home(props) {
         <img className={styles.mainImage} src={image}></img>
       </div>
 
-      {/* <div className={styles.footer}>
+      <div className={styles.footer}>
         <span>Connect With Me <a href="https://www.linkedin.com/in/saksham-arya-32b0781b0/" target="_blank"><FontAwesomeIcon icon={faLinkedin} ></FontAwesomeIcon></a> <a href="mailto:sakshamarya2001@gmail.com" target="_blank"><FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon></a> | </span><span>Any suggestions? <a href="https://docs.google.com/forms/d/e/1FAIpQLScPrgivaHohyU_v4os9fmPZ0hnZcFKkXekowyVACgQb_bYLTQ/viewform?usp=sf_link" target="_blank">Click here</a> </span> 
-      </div> */}
+      </div>
     </div>
   );
 }
