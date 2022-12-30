@@ -19,7 +19,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 
 
 // For Production
-const socket = io.connect("https://interviewspace-backend.herokuapp.com");
+const socket = io.connect("https://interview-space-backend.vercel.app");
 
 // for development
 // const socket = io.connect("http://localhost:5000");
@@ -106,7 +106,7 @@ export default function MainPage(props) {
 
     // For production
 
-    axios.get("https://interviewspace-backend.herokuapp.com/getQuestion").then((res)=>{
+    axios.get("https://interview-space-backend.vercel.app/getQuestion").then((res)=>{
         newQuestion=res.data;
 
         // pusing new question link to list of all clients in the room
@@ -183,7 +183,7 @@ export default function MainPage(props) {
 
     // For Production
 
-    axios.get("https://interviewspace-backend.herokuapp.com/twilioServers").then((res)=>{
+    axios.get("https://interview-space-backend.vercel.app/twilioServers").then((res)=>{
 
       console.log(res.data.stunURL);
       console.log(res.data.turnURL);
@@ -285,7 +285,7 @@ export default function MainPage(props) {
         // For Production
 
         
-          const res = await axios.post("https://interviewspace-backend.herokuapp.com/insertSessionDetails",{createSession});
+          const res = await axios.post("https://interview-space-backend.vercel.app/insertSessionDetails",{createSession});
           console.log("storing session to mongoDb");
           window.location.pathname = "/";
 

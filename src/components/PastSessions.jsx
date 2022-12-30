@@ -33,9 +33,9 @@ export default function AboutUs(props) {
     setLoading(true);
 
     console.log(id);
-    const res = await axios.post("https://interviewspace-backend.herokuapp.com/getSessionRecords");
+    const res = await axios.post("https://interview-space-backend.vercel.app/getSessionRecords");
 
-    axios.post("https://interviewspace-backend.herokuapp.com/getSessionRecords",{id}).then((res)=>{
+    axios.post("https://interview-space-backend.vercel.app/getSessionRecords",{id}).then((res)=>{
 
       // console.log(res);
       console.log(res.data);
