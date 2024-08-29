@@ -319,7 +319,7 @@ export default function MainPage(props) {
 
   const callUser = (id) => {
 
-    setLoading(true);
+    // setLoading(true);
     // socket.emit("joinRoom", idToCall);
 
     console.log(turnURL);
@@ -331,11 +331,11 @@ export default function MainPage(props) {
       trickle: false,
       stream: stream,
       config: { iceServers: [
-        { urls: "stun:global.stun.twilio.com:3478?transport=udp"},
+        { urls: "stun:global.stun.twilio.com:3478"},
         {
-          urls: "turn:turn.kyron.in:80",
-          username: "1659109624:e4ae5613-be9c-4a26-83a2-969c62f8ee8a",
-          credential: "Sm5Qnf84u9vNI4E7s+kxZrExkEk=",
+          urls: "turn:global.turn.twilio.com:3478?transport=udp",
+          username: "7ec969a60fd7d11862bee3e9ef9bd431017e8791a83954aea19328df624bcd9c",
+          credential: "OJAroG6euzvhMaQwuFI67REGaOY0gEv2mJDbyJCt/X0=",
         }
       ] },
     });
@@ -354,7 +354,7 @@ export default function MainPage(props) {
     });
 
     socket.on("callAccepted", (signal) => {
-      setLoading(false);
+      // setLoading(false);
       setCallAccepted(true);
       peer.signal(signal);
     });
